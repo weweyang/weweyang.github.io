@@ -27,6 +27,12 @@
         'rgb(255 215 0)','rgb(218 165 32)','rgb(255 215 0)',
         'rgb(238 180 34)'
     ];
+
+     var redColorNums = [
+        'rgb(255 0 0)','rgb(205 0 0)','rgb(139 0 0)',
+        'rgb(255 48 48)','rgb(255 64 64)','rgb(178 34 34)'
+      
+    ];
    var leaveIndex = Math.floor(Math.random() * 4);
    var leaveColorNums = whiteColorNums;
    if (leaveIndex == 0) {
@@ -41,7 +47,8 @@
 
 
     //树的颜色
-    var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60]];
+    var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60],[0 ,0, 205],
+                      [255 ,0, 0],[238 ,233, 191]];
     var tree_index = random(0, treeRGBNums.length - 1);
     var treeR = treeRGBNums[tree_index][0];
     var treeG = treeRGBNums[tree_index][1];
