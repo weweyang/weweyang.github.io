@@ -49,7 +49,8 @@
 
     //播放音乐
     var NoPlayMusic = true;
-    var musicNums = ['music/天外来物.mp3', 'music/天外来物.mp3'];
+    var musicNums = ['music/天外来物.mp3', 'music/丑八怪.mp3', 'music/耗尽.mp3',
+                    'music/你还要我怎样.mp3', 'music/演员.mp3', 'music/认真的雪.mp3'];
     var musicSrc = musicNums[random(0, musicNums.length - 1)];
     let audio = new Audio();
     audio.addEventListener('ended', function () {
@@ -63,8 +64,8 @@
         console.log("正在播放: " + songToPlay);
 
         // 设置音频源
-        //audio.src = songToPlay;
-        audio.src = 'music/天外来物.mp3';
+        audio.src = songToPlay;
+        //audio.src = 'music/天外来物.mp3';
         // 播放音频
         audio.play();
     }
