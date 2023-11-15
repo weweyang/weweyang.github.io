@@ -1,23 +1,23 @@
 (function(window){
 
+    function random(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+    }
+
 
     var redColorNums = [ 'rgb(255,105,180)','rgb(255,182,193)','rgb(218,112,214)',
     'rgb(255,20,147)','rgb(255,69,0)','rgb(255,0,255)'
     ];
 
-    var caihongColorNums = ['rgb(255,0,0)', 'rgb(255,128,0)',
-    'rgb(255,0,255)','rgb(255,0,128)'
-    ];
-
-    var treeR = 128;
-    var treeG = 0;
-    var treeB = 0;
+    var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60]];
+    var tree_index = random(0, treeRGBNums.length);
+    var treeR = treeRGBNums[tree_index][0];
+    var treeG = treeRGBNums[tree_index][1];
+    var treeB = treeRGBNums[tree_index][2];
 
     var NoPlayMusic = true;
 
-    function random(min, max) {
-        return min + Math.floor(Math.random() * (max - min + 1));
-    }
+
 
     function bezier(cp, t) {  
         var p1 = cp[0].mul((1 - t) * (1 - t));
@@ -487,25 +487,7 @@
         	ctx.beginPath();
         	//ctx.fillStyle =caihongColorNums[random(0, caihongColorNums.length - 1)];
 
-            if (random(0,2) > 1) {
-                treeR = (treeR + 1) % 256;
-            } else {
-                treeR = (treeR - 1) % 256;
-            }
-
-            if (random(0,2) > 1) {
-                treeG = (treeG + 1) % 256;
-            } else {
-                treeG = (treeG - 1) % 256;
-            }
-
-            if (random(0,2) > 1) {
-                treeB = (treeG + 1) % 256;
-            } else {
-                treeB = (treeG - 1) % 256;
-            }
-
-            ctx.fillStyle ='rgb(' + treeR + ',' + treeG + ',' + treeB + ')';
+            ctx.fillStyle ='rgb(' + (treeR + random(-10, 10)) + ',' + (treeG + random(-10, 10)) + ',' + (treeB + random(-10, 10)) + ')';
             ctx.shadowColor = 'rgb(50, 31, 32)';
             ctx.shadowBlur = 2;
         	ctx.moveTo(p.x, p.y);
