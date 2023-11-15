@@ -5,10 +5,11 @@
     'rgb(255,20,147)','rgb(255,69,0)','rgb(255,228,225)'
     ];
 
-    var caihongColorNums = ['rgb(255,0,0)', 'rgb(255,128,0)','rgb(255,255,0)',
-    
+    var caihongColorNums = ['rgb(255,0,0)', 'rgb(255,128,0)',
     'rgb(255,0,255)','rgb(255,0,128)'
     ];
+
+    var NoPlayMusic = true;
 
     function random(min, max) {
         return min + Math.floor(Math.random() * (max - min + 1));
@@ -129,6 +130,15 @@
             this.drawCirle();
             this.drawHeart();
             this.setHeartScale(scale);
+
+            if (NoPlayMusic == true) {
+                var audio = new Audio('music/天外来物1.mp3');
+                audio.onloadeddata = function() {
+                    audio.play();
+                    resolve();
+                };
+                NoPlayMusic = false;
+            }
         },
         drawHeart: function() {
             var ctx = this.tree.ctx, heart = this.heart;
