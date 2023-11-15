@@ -4,18 +4,22 @@
         return min + Math.floor(Math.random() * (max - min + 1));
     }
 
-
+    //树叶颜色
     var redColorNums = [ 'rgb(255,105,180)','rgb(255,182,193)','rgb(218,112,214)',
     'rgb(255,20,147)','rgb(255,69,0)','rgb(255,0,255)'
     ];
 
+    //树的颜色
     var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60]];
-    var tree_index = random(0, treeRGBNums.length);
+    var tree_index = random(0, treeRGBNums.length - 1);
     var treeR = treeRGBNums[tree_index][0];
     var treeG = treeRGBNums[tree_index][1];
     var treeB = treeRGBNums[tree_index][2];
 
+    //播放音乐
     var NoPlayMusic = true;
+    var musicNums = ['music/天外来物.mp3'];
+    var musicSrc = musicNums[random(0, musicNums.length - 1)];
 
 
 
@@ -136,8 +140,9 @@
             this.setHeartScale(scale);
 
             if (NoPlayMusic == true) {
-                var audio = new Audio('天外来物1.mp3');
+                var audio = new Audio(musicSrc);
                 audio.onloadeddata = function() {
+                    audio.loop = true;
                     audio.play();
                     resolve();
                 };
