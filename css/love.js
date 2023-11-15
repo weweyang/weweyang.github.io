@@ -453,7 +453,10 @@
                     height = bloom.height || this.height,
                     figure = this.seed.heart.figure;
                 var r = 240, x, y;
+
+                //random(4,10) 落叶个数
                 for (var i = 0; i < random(4,10); i++) {
+                    //random(200,500) 落叶速度
                    blooms.push(this.createBloom(width / 2 + width, height, r, figure, null, 1, null, 1, new Point(random(-200,700), 720), random(200,500)));
                 }
             }
