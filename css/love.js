@@ -1,13 +1,17 @@
 (function(window){
 
 
-    var redColorNums = [ 'rgb(255,105,180)','rgb(255,182,193)',
-    'rgb(255,20,147)','rgb(255,69,0)','rgb(255,228,225)'
+    var redColorNums = [ 'rgb(255,105,180)','rgb(255,182,193)','rgb(218,112,214)',
+    'rgb(255,20,147)','rgb(255,69,0)','rgb(255,0,255)'
     ];
 
     var caihongColorNums = ['rgb(255,0,0)', 'rgb(255,128,0)',
     'rgb(255,0,255)','rgb(255,0,128)'
     ];
+
+    var treeR = 128;
+    var treeG = 0;
+    var treeB = 0;
 
     var NoPlayMusic = true;
 
@@ -481,7 +485,27 @@
             var ctx = s.tree.ctx;
             ctx.save();
         	ctx.beginPath();
-        	ctx.fillStyle =caihongColorNums[random(0, caihongColorNums.length - 1)];
+        	//ctx.fillStyle =caihongColorNums[random(0, caihongColorNums.length - 1)];
+
+            if (random(0,2) > 1) {
+                treeR = (treeR + 1) % 256;
+            } else {
+                treeR = (treeR - 1) % 256;
+            }
+
+            if (random(0,2) > 1) {
+                treeG = (treeG + 1) % 256;
+            } else {
+                treeG = (treeG - 1) % 256;
+            }
+
+            if (random(0,2) > 1) {
+                treeB = (treeG + 1) % 256;
+            } else {
+                treeB = (treeG - 1) % 256;
+            }
+
+            ctx.fillStyle ='rgb(' + treeR + ',' + treeG + ',' + treeB + ')';
             ctx.shadowColor = 'rgb(50, 31, 32)';
             ctx.shadowBlur = 2;
         	ctx.moveTo(p.x, p.y);
