@@ -132,7 +132,7 @@
             this.setHeartScale(scale);
 
             if (NoPlayMusic == true) {
-                var audio = new Audio('music/天外来物1.mp3');
+                var audio = new Audio('天外来物1.mp3');
                 audio.onloadeddata = function() {
                     audio.play();
                     resolve();
