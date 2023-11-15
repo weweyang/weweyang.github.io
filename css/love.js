@@ -5,9 +5,40 @@
     }
 
     //树叶颜色
-    var redColorNums = [ 'rgb(255,105,180)','rgb(255,182,193)','rgb(218,112,214)',
-    'rgb(255,20,147)','rgb(255,69,0)','rgb(255,0,255)'
+    var whiteColorNums = [ 'rgb(224 ,255, 255)','rgb(191 ,239, 255)','rgb(202, 225, 255)',
+        'rgb(198 ,226, 255)','rgb(176 ,226, 255)','rgb(178, 223, 238)',
+        'rgb(187 255 255)','rgb(174 238 238)','rgb(150 205 205)'
     ];
+
+    var blueColorNums = [
+        'rgb(152, 245, 255)','rgb(142 ,229 ,238)','rgb(0, 245 ,255)',
+        'rgb(0 ,229 ,238)','rgb(0 ,197 ,205)','rgb(0, 255 ,255)',
+        'rgb(0 ,238, 238)','rgb(0, 197 ,205)','rgb(0 ,255 ,255)'
+    ];
+
+    var purpleColorNums = [
+        'rgb(255 0 255)','rgb(208 32 144)','rgb(238 130 238)',
+        'rgb(176 48 96)','rgb(255 20 147)','rgb(255 110 180)',
+        'rgb(255 181 197)','rgb(255 130 171)','rgb(255 52 179)'
+    ];
+
+    var yellowColorNums = [
+        'rgb(255 165 0)','rgb(255 140 0)','rgb(255 255 0)',
+        'rgb(255 215 0)','rgb(218 165 32)','rgb(255 215 0)',
+        'rgb(238 180 34)'
+    ];
+   var leaveIndex = Math.floor(Math.random() * 4);
+   var leaveColorNums = whiteColorNums;
+   if (leaveIndex == 0) {
+       leaveColorNums = whiteColorNums;
+   } else if (leaveIndex == 1) {
+       leaveColorNums = blueColorNums;
+   } else if (leaveIndex == 2) {
+       leaveColorNums = purpleColorNums;
+   } else if (leaveIndex == 3) {
+       leaveColorNums = yellowColorNums;
+   }
+
 
     //树的颜色
     var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60]];
@@ -18,9 +49,25 @@
 
     //播放音乐
     var NoPlayMusic = true;
-    var musicNums = ['music/天外来物.mp3'];
+    var musicNums = ['music/天外来物.mp3', 'music/天外来物.mp3'];
     var musicSrc = musicNums[random(0, musicNums.length - 1)];
+    let audio = new Audio();
+    audio.addEventListener('ended', function () {
+        playRandomSong();
+    });
 
+
+    function playRandomSong() {
+        let songIndex = Math.floor(Math.random() * musicNums.length);
+        let songToPlay = musicNums[songIndex];
+        console.log("正在播放: " + songToPlay);
+
+        // 设置音频源
+        //audio.src = songToPlay;
+        audio.src = 'music/天外来物.mp3';
+        // 播放音频
+        audio.play();
+    }
 
 
     function bezier(cp, t) {  
@@ -140,12 +187,7 @@
             this.setHeartScale(scale);
 
             if (NoPlayMusic == true) {
-                var audio = new Audio(musicSrc);
-                audio.onloadeddata = function() {
-                    audio.loop = true;
-                    audio.play();
-                    resolve();
-                };
+               playRandomSong();
                 NoPlayMusic = false;
             }
         },
@@ -510,7 +552,7 @@
         this.tree = tree;
         this.point = point;
         //this.color = color || 'rgb(248,' + random(100, 200) + ',' + random(0, 60) + ')';
-        this.color =  redColorNums[random(0, redColorNums.length - 1)];
+        this.color =  leaveColorNums[random(0, leaveColorNums.length - 1)];
         this.alpha = alpha || random(0.3, 1);
         this.angle = angle || random(0, 360);
         this.scale = scale || 0.1;
