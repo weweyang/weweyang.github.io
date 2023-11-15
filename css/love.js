@@ -33,7 +33,7 @@
         'rgb(255 48 48)','rgb(255 64 64)','rgb(178 34 34)'
       
     ];
-   var leaveIndex = Math.floor(Math.random() * 4);
+   var leaveIndex = Math.floor(Math.random() * 5);
    var leaveColorNums = whiteColorNums;
    if (leaveIndex == 0) {
        leaveColorNums = whiteColorNums;
@@ -43,12 +43,13 @@
        leaveColorNums = purpleColorNums;
    } else if (leaveIndex == 3) {
        leaveColorNums = yellowColorNums;
+   } else if (leaveIndex == 4) {
+        leaveColorNums = redColorNums;
    }
 
-
     //树的颜色
-    var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60],[0 ,0, 205],
-                      [255 ,0, 0],[238 ,233, 191]];
+    var treeRGBNums = [[128,0,0],[0,0,0],[230,230,250],[240,248,255],[255,69,0],[220,20,60],
+                      [255 ,0, 0]];
     var tree_index = random(0, treeRGBNums.length - 1);
     var treeR = treeRGBNums[tree_index][0];
     var treeG = treeRGBNums[tree_index][1];
@@ -58,7 +59,6 @@
     var NoPlayMusic = true;
     var musicNums = ['music/天外来物.mp3', 'music/丑八怪.mp3', 'music/耗尽.mp3',
                     'music/你还要我怎样.mp3', 'music/演员.mp3', 'music/认真的雪.mp3'];
-    var musicSrc = musicNums[random(0, musicNums.length - 1)];
     let audio = new Audio();
     audio.addEventListener('ended', function () {
         playRandomSong();
@@ -70,10 +70,7 @@
         let songToPlay = musicNums[songIndex];
         console.log("正在播放: " + songToPlay);
 
-        // 设置音频源
         audio.src = songToPlay;
-        //audio.src = 'music/天外来物.mp3';
-        // 播放音频
         audio.play();
     }
 
@@ -545,7 +542,9 @@
         	ctx.beginPath();
         	//ctx.fillStyle =caihongColorNums[random(0, caihongColorNums.length - 1)];
 
-            ctx.fillStyle ='rgb(' + (treeR + random(-10, 10)) + ',' + (treeG + random(-10, 10)) + ',' + (treeB + random(-10, 10)) + ')';
+            ctx.fillStyle ='rgb(' + ((treeR  )) + 
+                ',' + ((treeG + random(-5, 5)) ) + ','
+                 + ((treeB ) ) + ')';
             ctx.shadowColor = 'rgb(50, 31, 32)';
             ctx.shadowBlur = 2;
         	ctx.moveTo(p.x, p.y);
